@@ -1,10 +1,3 @@
-// Challenge / Exercise
-
-// 6. Output a list of dummy events to the EventsPage
-//    Every list item should include a link to the respective EventDetailPage
-// 7. Output the ID of the selected event on the EventDetailPage
-// BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import HomePage from './pages/Home';
@@ -13,6 +6,7 @@ import EventDetails from './pages/EventDetails';
 import NewEventPage from './pages/NewEvent';
 import EditEventPage from './pages/EditEvent';
 import RootLayout from './pages/Root';
+import EventsLayout from './EventsLayout';
 import ErrorPage from './Error';
 
 const router = createBrowserRouter([
@@ -22,10 +16,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'events/', element: <EventsPage /> },
-      { path: 'events/:id', element: <EventDetails /> },
-      { path: 'events/new', element: <NewEventPage /> },
-      { path: 'events/:id/edit', element: <EditEventPage /> },
+      {
+        path: '/events',
+        element: <EventsLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, element: <EventsPage /> },
+          { path: ':id', element: <EventDetails /> },
+          { path: 'new', element: <NewEventPage /> },
+          { path: ':id/edit', element: <EditEventPage /> },
+        ],
+      },
     ],
   },
 ]);
