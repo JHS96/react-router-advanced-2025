@@ -21,7 +21,9 @@ export async function loader() {
 
   if (!response.ok) {
     // return { isError: true, message: 'Error: Could not fetch events.' };
-    throw new Error('Could not fetch events.'); // makes use of the nearest errorElement in router
+    throw new Response(JSON.stringify({ message: 'Could not fetch events.' }), {
+      status: 500,
+    }); // makes use of the nearest errorElement in router
   } else {
     return response;
   }

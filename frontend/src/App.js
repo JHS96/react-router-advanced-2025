@@ -7,7 +7,7 @@ import NewEventPage from './pages/NewEvent';
 import EditEventPage from './pages/EditEvent';
 import RootLayout from './pages/Root';
 import EventsLayout from './EventsLayout';
-import ErrorPage from './Error';
+import ErrorPage from './pages/Error';
 
 const router = createBrowserRouter([
   {
