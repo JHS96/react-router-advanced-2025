@@ -4,6 +4,11 @@ import EventsList from '../components/EventsList';
 
 function EventsPage() {
   const data = useLoaderData();
+
+  // if (data.isError) {
+  //   return <p>{data.message}</p>;
+  // }
+
   const events = data.events;
 
   return <EventsList events={events} />;
@@ -15,7 +20,8 @@ export async function loader() {
   const response = await fetch('http://localhost:8080/events');
 
   if (!response.ok) {
-    // error handling code goes here
+    // return { isError: true, message: 'Error: Could not fetch events.' };
+    throw new Error('Could not fetch events.'); // makes use of the nearest errorElement in router
   } else {
     return response;
   }
