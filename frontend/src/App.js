@@ -6,7 +6,7 @@ import EventDetailsPage from './pages/EventDetails';
 import NewEventPage from './pages/NewEvent';
 import EditEventPage from './pages/EditEvent';
 import RootLayout from './pages/Root';
-import EventsLayout from './EventsLayout';
+import EventsLayout from './pages/EventsLayout';
 import ErrorPage from './pages/Error';
 
 const router = createBrowserRouter([
