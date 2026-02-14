@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Form } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
@@ -9,13 +9,15 @@ function EventForm({ method, event }) {
   }
 
   return (
-    <form className={classes.form}>
+    // Below Form component/tag sends the post request to our action method instead of the backend
+    // and includes the form data. Our action method will the handle the http request.
+    <Form method='post' className={classes.form}>
       <p>
         <label htmlFor='title'>Title</label>
         <input
           id='title'
           type='text'
-          name='title'
+          name='title' // name attributes are essential for extracting form data
           required
           defaultValue={event ? event.title : ''}
         />
@@ -25,7 +27,7 @@ function EventForm({ method, event }) {
         <input
           id='image'
           type='url'
-          name='image'
+          name='image' // name attributes are essential for extracting form data
           required
           defaultValue={event ? event.image : ''}
         />
@@ -35,7 +37,7 @@ function EventForm({ method, event }) {
         <input
           id='date'
           type='date'
-          name='date'
+          name='date' // name attributes are essential for extracting form data
           required
           defaultValue={event ? event.date : ''}
         />
@@ -44,7 +46,7 @@ function EventForm({ method, event }) {
         <label htmlFor='description'>Description</label>
         <textarea
           id='description'
-          name='description'
+          name='description' // name attributes are essential for extracting form data
           rows='5'
           required
           defaultValue={event ? event.description : ''}
@@ -56,7 +58,7 @@ function EventForm({ method, event }) {
         </button>
         <button>Save</button>
       </div>
-    </form>
+    </Form>
   );
 }
 
