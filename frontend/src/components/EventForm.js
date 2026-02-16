@@ -10,7 +10,7 @@ function EventForm({ method, event }) {
 
   return (
     // Below Form component/tag sends the post request to our action method instead of the backend
-    // and includes the form data. Our action method will the handle the http request.
+    // and includes the form data. Our action method will then handle the http request.
     <Form method='post' className={classes.form}>
       <p>
         <label htmlFor='title'>Title</label>
